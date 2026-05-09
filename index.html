@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAS Arquitectura | Asunción, Paraguay</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark: #111110;
+    --dark-2: #1C1B19;
+    --olive: #7A7B5F;
+    --olive-light: #A8AA8C;
+    --sand: #E8E3D8;
+    --sand-light: #F4F1EC;
+    --warm-white: #FAF8F4;
+    --body: #5C5B54;
+    --muted: #9E9C93;
+    --border: #E2DDD4;
+    --border-dark: rgba(255,255,255,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--dark);
+    background: var(--warm-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(17, 17, 16, 0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-dark);
+    padding: 0 60px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--warm-white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--olive-light); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: rgba(255,255,255,0.9); }
+
+  .nav-cta {
+    font-size: 12px !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase;
+    border: 1px solid var(--olive-light) !important;
+    color: var(--olive-light) !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    transition: all 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--olive-light) !important;
+    color: var(--dark) !important;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    align-items: flex-end;
+    padding: 0 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(17,17,16,0.4) 0%, rgba(17,17,16,0.85) 100%),
+      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><rect width="60" height="60" fill="%231C1B19"/><path d="M0 60L60 0M-10 10L10 -10M50 70L70 50" stroke="%23232220" stroke-width="1"/></svg>');
+  }
+
+  .hero-lines {
+    position: absolute;
+    top: 0; right: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(122, 123, 95, 0.04) 100%);
+    border-left: 1px solid rgba(122, 123, 95, 0.1);
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: flex-end;
+    padding-top: 140px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-line {
+    width: 40px;
+    height: 1px;
+    background: var(--olive-light);
+  }
+
+  .hero-eyebrow-text {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1.0;
+    letter-spacing: -1px;
+    color: var(--warm-white);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--olive-light);
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--warm-white);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+    transition: all 0.2s;
+  }
+
+  .hero-cta:hover {
+    color: var(--olive-light);
+    border-color: var(--olive-light);
+  }
+
+  .hero-cta-arrow {
+    display: inline-flex;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .hero-cta:hover .hero-cta-arrow {
+    background: var(--olive-light);
+    border-color: var(--olive-light);
+    color: var(--dark);
+  }
+
+  .hero-right {
+    padding-bottom: 8px;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    margin-bottom: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+  }
+
+  .hero-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-principle {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .principle-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--olive);
+    min-width: 28px;
+    padding-top: 2px;
+  }
+
+  .principle-text h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
+  }
+
+  .principle-text p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .hero { padding: 120px 24px 60px; min-height: auto; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-right { display: none; }
+  }
+
+  /* PROYECTOS */
+  .section {
+    padding: 100px 60px;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .section-title em { font-style: italic; color: var(--olive); }
+
+  .section-link {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--body);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 3px;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .section-link:hover { color: var(--dark); border-color: var(--dark); }
+
+  .proyectos-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+  }
+
+  .proyecto-card {
+    background: var(--sand-light);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .proyecto-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.12); }
+
+  .proyecto-card-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(17,17,16,0.8) 0%, rgba(17,17,16,0.1) 60%, transparent 100%);
+    z-index: 1;
+  }
+
+  .proyecto-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 28px;
+    width: 100%;
+  }
+
+  .proyecto-tipo {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--olive-light);
+    margin-bottom: 6px;
+  }
+
+  .proyecto-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .proyecto-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    opacity: 0.15;
+  }
+
+  .proyectos-side {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .proyecto-card.small { aspect-ratio: unset; flex: 1; min-height: 180px; }
+
+  @media (max-width: 768px) {
+    .proyectos-grid { grid-template-columns: 1fr; }
+    .section { padding: 70px 24px; }
+  }
+
+  /* SERVICIOS DARK */
+  .section-dark {
+    background: var(--dark-2);
+    padding: 100px 60px;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-top: 56px;
+  }
+
+  .servicio-item {
+    background: var(--dark-2);
+    padding: 40px 32px;
+    transition: background 0.2s;
+  }
+
+  .servicio-item:hover { background: #222220; }
+
+  .servicio-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--olive);
+    line-height: 1;
+    margin-bottom: 20px;
+    opacity: 0.5;
+  }
+
+  .servicio-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--warm-white);
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+  }
+
+  .servicio-item p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .servicios-grid { grid-template-columns: 1fr; }
+    .section-dark { padding: 70px 24px; }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* FILOSOFIA */
+  .filosofia {
+    background: var(--sand-light);
+    padding: 100px 60px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .filosofia-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .filosofia-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+  }
+
+  .filosofia-quote strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--olive);
+  }
+
+  .filosofia-text .section-label { color: var(--olive); }
+  .filosofia-text p {
+    font-size: 15px;
+    color: var(--body);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .filosofia-values {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .filosofia-value-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--olive);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .filosofia-value-label {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 768px) {
+    .filosofia { padding: 70px 24px; }
+    .filosofia-inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--dark);
+    padding: 120px 60px;
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-section .section-label { color: var(--olive-light); }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    color: var(--warm-white);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .cta-title em { font-style: italic; color: var(--olive-light); }
+
+  .cta-section p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .cta-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--olive-light);
+    color: var(--olive-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 18px 40px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .cta-wa:hover {
+    background: var(--olive-light);
+    color: var(--dark);
+  }
+
+  .cta-wa svg { width: 18px; height: 18px; fill: currentColor; }
+
+  .cta-info {
+    margin-top: 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  @media (max-width: 768px) {
+    .cta-section { padding: 80px 24px; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0C0B0A;
+    color: rgba(255,255,255,0.35);
+    padding: 60px 60px 40px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand a {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .footer-brand a span { color: var(--olive-light); }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.7;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: rgba(255,255,255,0.7); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 768px) {
+    footer { padding: 60px 24px 40px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">MAS <span>Arquitectura</span></a>
+  <ul class="nav-links">
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#filosofia">Filosofia</a></li>
+    <li><a href="https://wa.me/595981580580" class="nav-cta">Consultar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <div class="hero-line"></div>
+        <span class="hero-eyebrow-text">Estudio de Arquitectura</span>
+      </div>
+      <h1>Arquitectura con <em>respeto</em><br>por el entorno</h1>
+      <p>Diseñamos espacios residenciales y comerciales que dialogan con el ambiente. Soluciones arquitectonicas que integran estetica, funcionalidad y sostenibilidad.</p>
+      <a href="https://wa.me/595981580580?text=Hola%2C+me+interesa+consultar+sobre+un+proyecto+con+MAS+Arquitectura" class="hero-cta">
+        Consultar sobre un proyecto
+        <span class="hero-cta-arrow">→</span>
+      </a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-tag">Principios del estudio</div>
+      <div class="hero-principles">
+        <div class="hero-principle">
+          <span class="principle-num">01</span>
+          <div class="principle-text">
+            <h4>Respeto por el ambiente</h4>
+            <p>Cada proyecto contempla su impacto sobre el entorno natural y urbano.</p>
+          </div>
+        </div>
+        <div class="hero-principle">
+          <span class="principle-num">02</span>
+          <div class="principle-text">
+            <h4>Funcionalidad sin concesiones</h4>
+            <p>Los espacios deben responder a las necesidades reales de quienes los habitan.</p>
+          </div>
+        </div>
+        <div class="hero-principle">
+          <span class="principle-num">03</span>
+          <div class="principle-text">
+            <h4>Estetica con proposito</h4>
+            <p>La forma sigue la funcion, pero ambas pueden ser bellas al mismo tiempo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="section" id="proyectos">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Nuestro trabajo</div>
+        <h2 class="section-title">Proyectos que<br>definen <em>espacios</em></h2>
+      </div>
+      <a href="https://wa.me/595981580580" class="section-link">Ver todos los proyectos</a>
+    </div>
+    <div class="proyectos-grid">
+      <div class="proyecto-card" style="background: linear-gradient(135deg, #2C2A25 0%, #1A1917 100%);">
+        <div class="proyecto-placeholder">🏛</div>
+        <div class="proyecto-card-bg"></div>
+        <div class="proyecto-card-content">
+          <div class="proyecto-tipo">Residencial</div>
+          <div class="proyecto-nombre">Casa Estigarribia<br>Asuncion, 2024</div>
+        </div>
+      </div>
+      <div class="proyectos-side">
+        <div class="proyecto-card small" style="background: linear-gradient(135deg, #1E2820 0%, #161D18 100%);">
+          <div class="proyecto-placeholder" style="font-size:40px;">🏢</div>
+          <div class="proyecto-card-bg"></div>
+          <div class="proyecto-card-content">
+            <div class="proyecto-tipo">Comercial</div>
+            <div class="proyecto-nombre">Oficinas Zona Norte<br>Asuncion, 2024</div>
+          </div>
+        </div>
+        <div class="proyecto-card small" style="background: linear-gradient(135deg, #252019 0%, #1C1811 100%);">
+          <div class="proyecto-placeholder" style="font-size:40px;">🌿</div>
+          <div class="proyecto-card-bg"></div>
+          <div class="proyecto-card-content">
+            <div class="proyecto-tipo">Vivienda Social</div>
+            <div class="proyecto-nombre">Conjunto Residencial<br>Fernando de la Mora, 2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section-dark" id="servicios">
+  <div class="section-inner">
+    <div class="section-label" style="color: var(--olive-light);">Lo que hacemos</div>
+    <h2 class="section-title" style="color: var(--warm-white);">Servicios de<br><em>arquitectura integral</em></h2>
+    <div class="servicios-grid">
+      <div class="servicio-item">
+        <div class="servicio-num">01</div>
+        <h3>Arquitectura Residencial</h3>
+        <p>Viviendas unifamiliares y multifamiliares diseñadas desde el primer trazo con la vision y estilo de vida de sus habitantes.</p>
+      </div>
+      <div class="servicio-item">
+        <div class="servicio-num">02</div>
+        <h3>Arquitectura Comercial</h3>
+        <p>Espacios de oficinas, comercios y equipamientos que optimizan la experiencia del usuario y refuerzan la identidad de la empresa.</p>
+      </div>
+      <div class="servicio-item">
+        <div class="servicio-num">03</div>
+        <h3>Diseño de Interiores</h3>
+        <p>Interiorismo coherente con el proyecto arquitectonico. Materiales, iluminacion y mobiliario seleccionados con criterio estetico y funcional.</p>
+      </div>
+      <div class="servicio-item">
+        <div class="servicio-num">04</div>
+        <h3>Gerencia de Obra</h3>
+        <p>Supervision y coordinacion de la construccion para garantizar que cada proyecto se ejecute segun el diseño, en tiempo y en presupuesto.</p>
+      </div>
+      <div class="servicio-item">
+        <div class="servicio-num">05</div>
+        <h3>Renders y Visualizacion</h3>
+        <p>Renders fotorrealistas y recorridos virtuales 3D que permiten ver el proyecto terminado antes de comenzar la construccion.</p>
+      </div>
+      <div class="servicio-item">
+        <div class="servicio-num">06</div>
+        <h3>Consultoria y Asesoria</h3>
+        <p>Acompañamiento tecnico en etapas puntuales: tramites municipales, optimizacion de planos existentes o evaluacion de terrenos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFIA -->
+<section class="filosofia" id="filosofia">
+  <div class="filosofia-inner">
+    <div>
+      <p class="filosofia-quote">"La arquitectura que dura es la que <strong>respeta su tiempo</strong>, su lugar y a las personas que la habitan."</p>
+    </div>
+    <div class="filosofia-text">
+      <div class="section-label">Nuestra filosofia</div>
+      <p>MAS Arquitectura nace con la conviccion de que cada proyecto es una oportunidad de construir mejor. No solo edificios: relaciones entre personas, espacio y naturaleza.</p>
+      <p>Trabajamos desde Asuncion con una mirada regional, integrando las mejores practicas del diseño contemporaneo con los materiales y tradiciones constructivas del Paraguay.</p>
+      <div class="filosofia-values">
+        <div>
+          <div class="filosofia-value-num">+50</div>
+          <div class="filosofia-value-label">Proyectos realizados</div>
+        </div>
+        <div>
+          <div class="filosofia-value-num">8+</div>
+          <div class="filosofia-value-label">Años de experiencia</div>
+        </div>
+        <div>
+          <div class="filosofia-value-num">100%</div>
+          <div class="filosofia-value-label">Proyectos entregados</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label" style="text-align:center;">Hablemos</div>
+    <h2 class="cta-title">Tu proyecto empieza<br>con <em>una consulta</em></h2>
+    <p>Contáctanos por WhatsApp y cuéntanos tu idea. Analizamos el terreno, el programa y el presupuesto sin compromiso y te damos una primera orientacion de diseño.</p>
+    <a href="https://wa.me/595981580580?text=Hola%2C+me+interesa+consultar+sobre+un+proyecto+de+arquitectura" class="cta-wa">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Iniciar conversacion
+    </a>
+    <p class="cta-info">Dr. Eulogio Estigarribia 4892 esq. Tte Zotti, Asuncion · +595 981 580 580</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#">MAS <span>Arquitectura</span></a>
+      <p>Estudio de arquitectura en Asuncion, Paraguay. Arquitectura residencial, comercial y diseño de interiores con respeto por el ambiente.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#">Arquitectura Residencial</a></li>
+        <li><a href="#">Arquitectura Comercial</a></li>
+        <li><a href="#">Diseno de Interiores</a></li>
+        <li><a href="#">Gerencia de Obra</a></li>
+        <li><a href="#">Visualizacion 3D</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="#">Dr. E. Estigarribia 4892</a></li>
+        <li><a href="#">esq. Tte Zotti, Asuncion</a></li>
+        <li><a href="https://wa.me/595981580580">+595 981 580 580</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>2026 MAS Arquitectura. Todos los derechos reservados.</span>
+    <span>Asuncion, Paraguay</span>
+  </div>
+</footer>
+
+</body>
+</html>
